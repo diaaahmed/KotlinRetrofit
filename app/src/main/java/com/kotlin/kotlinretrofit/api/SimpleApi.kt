@@ -2,6 +2,7 @@ package com.kotlin.kotlinretrofit.api
 
 import com.kotlin.kotlinretrofit.model.Post
 import retrofit2.Response
+
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -26,4 +27,5 @@ interface SimpleApi
         @Query("_sort") sort:String,
         @Query("_order") order:String
     ): Response<List<Post>>
+
 }
