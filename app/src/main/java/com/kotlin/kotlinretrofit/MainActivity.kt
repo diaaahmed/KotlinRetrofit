@@ -1,5 +1,6 @@
 package com.kotlin.kotlinretrofit
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,8 @@ import com.kotlin.kotlinretrofit.databinding.ActivityMainBinding
 import com.kotlin.kotlinretrofit.repository.Repository
 import com.kotlin.kotlinretrofit.viewmodel.MainViewModel
 import com.kotlin.kotlinretrofit.viewmodel.MainViewModelFactory
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity()
 {
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity()
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(ui.root)
@@ -30,6 +34,15 @@ class MainActivity : AppCompatActivity()
         //viewModel.getCustomPost(7)
 
         viewModel.getCustomPost2(7,"id","desc")
+
+//        runBlocking {
+//            viewModel.getNewPostFlow(6)
+//
+//            viewModel._responseFlow.observe(this@MainActivity)
+//            {
+//
+//            }
+//        }
 
         viewModel._myResponse4.observe(this, Observer{response->
 
